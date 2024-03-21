@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Radio } from 'flowbite-svelte';
-    import { answerOptions } from '$lib/data'; // Adjust the path as necessary
+    import { answerOptions, questions } from '$lib/data';
     import { answerStore } from '$lib/answerStore';
 
     export let questionIndex: number;
@@ -8,10 +8,15 @@
 
     let selectedValue: number | undefined;
 
-    // Updated function to use the store
     function updateAnswer(value: number) {
         selectedValue = value;
-        answerStore.updateAnswer(questionIndex, selectedValue);
+        const currentQuestion = questions.find(q => q.index === questionIndex);
+
+        if (currentQuestion) {
+            answerStore.updateAnswer(questionIndex, value, currentQuestion.optimist, currentQuestion.innovator);
+        } else {
+            console.error('Question not found');
+        }
     }
 </script>
 

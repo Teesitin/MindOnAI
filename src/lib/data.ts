@@ -10,6 +10,13 @@ export interface Answer {
     impact: number;
 }
 
+export interface Quadrant {
+    name: string;
+    description: string;
+    optimistRange: [number, number];
+    innovatorRange: [number, number];
+}
+
 export const questions: Question[] = [
     { index: 1, question: "AI systems should make important decisions in healthcare.", optimist: 4, innovator: 5 },
     { index: 2, question: "Humans will always be necessary to oversee AI decisions.", optimist: -3, innovator: -2 },
@@ -49,4 +56,62 @@ export const answerOptions: Answer[] = [
     { answer: "Unsure", impact: 0 },
     { answer: "Disagree", impact: -1 },
     { answer: "Strongly Disagree", impact: -2 }
+];
+
+
+export const quadrants: Quadrant[] = [
+    {
+      name: 'Cautious Regulator',
+      description: 'Advocates for strict regulation, cautious about the potential consequences of AI.',
+      optimistRange: [-50, 50],
+      innovatorRange: [51, 150],
+    },
+    {
+      name: 'Ethical Guardian',
+      description: 'Values ethical considerations in AI development, supports thoughtful regulation.',
+      optimistRange: [51, 150],
+      innovatorRange: [51, 150],
+    },
+    {
+      name: 'Progressive Optimist',
+      description: 'Sees the benefits of AI, believes in progressive policies to guide its development.',
+      optimistRange: [101, 150],
+      innovatorRange: [51, 150],
+    },
+    {
+      name: 'Moderate Monitor',
+      description: 'Supports AI growth with moderate oversight, aims for a balanced development path.',
+      optimistRange: [-50, 50],
+      innovatorRange: [-50, 50],
+    },
+    {
+      name: 'Centrist',
+      description: 'Holds a central view on AI, neither too optimistic nor too innovative, prefers a steady approach.',
+      optimistRange: [-50, 50],
+      innovatorRange: [-50, 50],
+    },
+    {
+      name: 'Tempered Enthusiast',
+      description: 'Generally positive about AI, but advocates for a tempered approach to innovation.',
+      optimistRange: [51, 150],
+      innovatorRange: [-50, 50],
+    },
+    {
+      name: 'Prudent Pessimist',
+      description: 'Concerned about AI risks, supports restrictions and careful examination of AI applications.',
+      optimistRange: [-150, -51],
+      innovatorRange: [51, 150],
+    },
+    {
+      name: 'Reflective Skeptic',
+      description: 'Skeptical of AI\'s promise, favors rigorous evaluation and reflection before adoption.',
+      optimistRange: [-150, -51],
+      innovatorRange: [-50, 50],
+    },
+    {
+      name: 'AI Enthusiast',
+      description: 'Highly optimistic about AI, favors rapid innovation with minimal regulatory interference.',
+      optimistRange: [-150, -51],
+      innovatorRange: [-150, -51],
+    }
 ];

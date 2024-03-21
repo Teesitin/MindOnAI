@@ -18,7 +18,7 @@
 </div>
 
 <div class="max-w-3xl m-auto flex flex-col items-center mb-20 mt-10">
-    <Button>
+    <Button href="/results">
         Complete
     </Button>
 </div>

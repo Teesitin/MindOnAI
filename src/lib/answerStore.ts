@@ -1,23 +1,51 @@
-import { writable, get } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
+import { questions } from './data';
 
-interface AnswerMap {
-  [questionIndex: number]: number;
+interface AnswerDetail {
+    impact: number;
+    optimistWeight: number;
+    innovatorWeight: number;
 }
 
-const createAnswerStore = () => {
-  const { subscribe, set, update } = writable<AnswerMap>({});
+interface AnswerMap {
+    [questionIndex: number]: AnswerDetail;
+}
 
-  return {
-    subscribe,
-    updateAnswer: (questionIndex: number, answerWeight: number) =>
-      update(answers => {
-        const updatedAnswers = { ...answers, [questionIndex]: answerWeight };
-        console.log('Current Answers:', updatedAnswers);
-        return updatedAnswers;
-      }),
-    reset: () => set({}),
-    getAnswers: () => get({ subscribe })
-  };
+const answerMap = writable<AnswerMap>({});
+    // Create a derived store to calculate the total scores based on the answerMap
+    const totalScores = derived(answerMap, ($answerMap) => {
+    let totalOptimist = 0;
+    let totalInnovator = 0;
+
+    Object.values($answerMap).forEach(answerDetail => {
+        totalOptimist += answerDetail.impact * answerDetail.optimistWeight;
+        totalInnovator += answerDetail.impact * answerDetail.innovatorWeight;
+    });
+
+    return {
+        totalOptimist,
+        totalInnovator,
+    };
+});
+
+// The original answer store functions
+const createAnswerStore = () => {
+    return {
+        subscribe: totalScores.subscribe, // You subscribe to the totalScores now
+        updateAnswer: (questionIndex: number, answerImpact: number, optimistWeight: number, innovatorWeight: number) =>
+        answerMap.update(answers => {
+            const updatedAnswers = {
+            ...answers,
+            [questionIndex]: {
+                impact: answerImpact,
+                optimistWeight: optimistWeight,
+                innovatorWeight: innovatorWeight,
+            },
+            };
+            return updatedAnswers;
+        }),
+        reset: () => answerMap.set({}),
+    };
 };
 
 export const answerStore = createAnswerStore();
