@@ -16,8 +16,8 @@
 </script>
 
 <div class="w-full flex bg-gray-50 p-4 m-4 rounded-xl gap-10 justify-between border-2">
-    <div class="w-9/12 block">
-        <div>
+    <div class="w-1/2 block md:w-9/12">
+        <div class="text-blue-600 font-semibold">
             Q{questionIndex}
         </div>
         <div class="mt-4">
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="w-3/12">
+    <div class="w-1/2  md:w-3/12">
         {#each answerOptions as { answer, impact }}
             <Radio name={`question-${questionIndex}`} bind:group={selectedValue} value={impact} on:change={() => updateAnswer(impact)} class="m-2">
                 {answer}
