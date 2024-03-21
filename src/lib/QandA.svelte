@@ -15,7 +15,7 @@
     }
 </script>
 
-<div class="w-full flex bg-gray-50 p-4 m-4 rounded-xl gap-10 justify-between">
+<div class="w-full flex bg-gray-50 p-4 m-4 rounded-xl gap-10 justify-between border-2">
     <div class="w-9/12 block">
         <div>
             Q{questionIndex}
@@ -26,9 +26,9 @@
     </div>
 
     <div class="w-3/12">
-        {#each Array.from(answerOptions.entries()) as [text, value]}
-            <Radio name={`question-${questionIndex}`} bind:group={selectedValue} value={value} on:change={() => updateAnswer(value)} class="m-2">
-                {text}
+        {#each answerOptions as { answer, impact }}
+            <Radio name={`question-${questionIndex}`} bind:group={selectedValue} value={impact} on:change={() => updateAnswer(impact)} class="m-2">
+                {answer}
             </Radio>
         {/each}
     </div>
