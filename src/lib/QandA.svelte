@@ -9,6 +9,7 @@
     let selectedValue: number | undefined;
 
     function updateAnswer(value: number) {
+        console.log('Updating answer for question:', questionIndex, 'with value:', value); // Debug log
         selectedValue = value;
         const currentQuestion = questions.find(q => q.index === questionIndex);
 
@@ -18,6 +19,7 @@
             console.error('Question not found');
         }
     }
+
 </script>
 
 <div class="w-full flex bg-gray-50 p-4 m-4 rounded-xl gap-10 justify-between border-2">

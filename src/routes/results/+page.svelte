@@ -1,14 +1,12 @@
 <script lang="ts">
-	import { Heading, P } from 'flowbite-svelte';
+	import { Button, Heading, P } from 'flowbite-svelte';
     import XyPloter from '$lib/XYPloter.svelte';
     import { quadrants, type Quadrant } from '$lib/data';
 	import { answerStore } from '$lib/answerStore';
 
-    // Subscribe to the scores from answerStore
-    let scores: { totalOptimist: any; totalInnovator: any; };
-    
-    answerStore.subscribe(value => {
-        scores = value;
+    let scores = { totalOptimist: 0, totalInnovator: 0 };
+    answerStore.currentScores.subscribe(value => {
+        scores = value || scores;
     });
 
     let userQuadrant: Quadrant | undefined;
@@ -19,6 +17,14 @@
         scores.totalInnovator >= q.innovatorRange[0] &&
         scores.totalInnovator <= q.innovatorRange[1]
     );
+
+    function manuallyUpdateScores() {
+        const optimistScore = 75;
+        const innovatorScore = 50;
+        
+        answerStore.setTotalScores(optimistScore, innovatorScore);
+    }
+
 </script>
 
 <div class="text-center mt-10 mb-20 mx-2 md:max-w-4xl md:mx-auto">
@@ -41,3 +47,4 @@
     <Heading tag="h2" class="mb-4" customSize="text-2xl font-bold">Coming Soon: See How You Compare</Heading>
     <P>In the near future, we'll be introducing a feature that allows you to anonymously compare your perspectives with those of the broader community. This comparative insight will enable you to understand where you stand in the landscape of AI opinion and see the diversity of thought around these critical issues. Stay tuned for an update where you can gain new perspectives and perhaps even find new allies in your AI views.</P>
 </div>
+

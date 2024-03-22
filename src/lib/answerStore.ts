@@ -1,5 +1,4 @@
 import { writable, derived } from 'svelte/store';
-import { questions } from './data';
 
 interface AnswerDetail {
     impact: number;
@@ -12,8 +11,8 @@ interface AnswerMap {
 }
 
 const answerMap = writable<AnswerMap>({});
-    // Create a derived store to calculate the total scores based on the answerMap
-    const totalScores = derived(answerMap, ($answerMap) => {
+
+const totalScores = derived(answerMap, ($answerMap) => {
     let totalOptimist = 0;
     let totalInnovator = 0;
 
@@ -22,29 +21,35 @@ const answerMap = writable<AnswerMap>({});
         totalInnovator += answerDetail.impact * answerDetail.innovatorWeight;
     });
 
+    console.log(totalOptimist +" and " +totalInnovator);
+
     return {
         totalOptimist,
         totalInnovator,
     };
 });
 
-// The original answer store functions
 const createAnswerStore = () => {
     return {
-        subscribe: totalScores.subscribe, // You subscribe to the totalScores now
-        updateAnswer: (questionIndex: number, answerImpact: number, optimistWeight: number, innovatorWeight: number) =>
-        answerMap.update(answers => {
-            const updatedAnswers = {
-            ...answers,
-            [questionIndex]: {
-                impact: answerImpact,
-                optimistWeight: optimistWeight,
-                innovatorWeight: innovatorWeight,
-            },
-            };
-            return updatedAnswers;
-        }),
+        // Providing a direct reference for subscribing to current scores
+        currentScores: totalScores,
+        updateAnswer: (questionIndex: number, answerImpact: number, optimistWeight: number, innovatorWeight: number) => 
+            answerMap.update(answers => {
+                const updatedAnswers = {
+                    ...answers,
+                    [questionIndex]: {
+                        impact: answerImpact,
+                        optimistWeight: optimistWeight,
+                        innovatorWeight: innovatorWeight,
+                    },
+                };
+                return updatedAnswers;
+            }),
         reset: () => answerMap.set({}),
+        // Adjust or remove as necessary, based on your requirements
+        setTotalScores: (totalOptimist: number, totalInnovator: number) => {
+            // This functionality may need reevaluation based on the new structure
+        }
     };
 };
 
