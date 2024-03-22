@@ -13,7 +13,7 @@
     let dotY = 384 + (scores.totalInnovator * -1.30);
 </script>
 
-<div class="text-center mx-2 md:max-w-3xl md:mx-auto relative border-2">
+<div class="text-center mx-2 md:max-w-3xl md:mx-auto relative">
     <img src="/Ai-Test.png" alt="ai-xy-plot" class="w-full h-auto">
 
     <svg

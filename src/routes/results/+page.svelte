@@ -39,10 +39,10 @@
     {/if}
 </div>
 
-<div class="text-center mt-0 mx-2 mb-20 md:max-w-4xl md:mx-auto">
+<!-- <div class="text-center mt-0 mx-2 mb-20 md:max-w-4xl md:mx-auto">
     <P class="mb-2">Your Optimism Score: {scores.totalOptimist}</P>
     <P class="mb-6">Your Innovation Score: {scores.totalInnovator}</P>
-</div>
+</div> -->
 
 
 <XyPloter/>
