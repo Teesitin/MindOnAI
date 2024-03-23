@@ -1,56 +1,93 @@
+// src/stores/answersStore.ts
 import { writable, derived } from 'svelte/store';
+import { questions } from '$lib/data';
 
-interface AnswerDetail {
-    impact: number;
-    optimistWeight: number;
-    innovatorWeight: number;
+interface Answer {
+    questionIndex: number;
+    response: number;
 }
 
-interface AnswerMap {
-    [questionIndex: number]: AnswerDetail;
-}
+let userAnswers = writable<Answer[]>([]);
 
-const answerMap = writable<AnswerMap>({});
+let totalImpacts = derived(userAnswers, ($userAnswers) => {
+    let totalOptimistImpact = 0;
+    let totalInnovatorImpact = 0;
 
-const totalScores = derived(answerMap, ($answerMap) => {
-    let totalOptimist = 0;
-    let totalInnovator = 0;
+    $userAnswers.forEach(({ questionIndex, response }) => {
+        const question = questions.find(q => q.index === questionIndex);
+        if (!question) return;
 
-    Object.values($answerMap).forEach(answerDetail => {
-        totalOptimist += answerDetail.impact * answerDetail.optimistWeight;
-        totalInnovator += answerDetail.impact * answerDetail.innovatorWeight;
+        totalOptimistImpact += response * question.optimist;
+        totalInnovatorImpact += response * question.innovator;
     });
 
-    console.log(totalOptimist +" and " +totalInnovator);
+    totalOptimistImpact = Math.min(100, Math.max(-100, totalOptimistImpact));
+    totalInnovatorImpact = Math.min(100, Math.max(-100, totalInnovatorImpact));
+
+    console.log(totalOptimistImpact +"," + totalInnovatorImpact);
 
     return {
-        totalOptimist,
-        totalInnovator,
+        totalOptimistImpact,
+        totalInnovatorImpact,
     };
 });
 
-const createAnswerStore = () => {
-    return {
-        // Providing a direct reference for subscribing to current scores
-        currentScores: totalScores,
-        updateAnswer: (questionIndex: number, answerImpact: number, optimistWeight: number, innovatorWeight: number) => 
-            answerMap.update(answers => {
-                const updatedAnswers = {
-                    ...answers,
-                    [questionIndex]: {
-                        impact: answerImpact,
-                        optimistWeight: optimistWeight,
-                        innovatorWeight: innovatorWeight,
-                    },
-                };
-                return updatedAnswers;
-            }),
-        reset: () => answerMap.set({}),
-        // Adjust or remove as necessary, based on your requirements
-        setTotalScores: (totalOptimist: number, totalInnovator: number) => {
-            // This functionality may need reevaluation based on the new structure
-        }
-    };
-};
 
-export const answerStore = createAnswerStore();
+export function answerQuestion(questionIndex: number, response: number) {
+    userAnswers.update(answers => {
+        const index = answers.findIndex(answer => answer.questionIndex === questionIndex);
+        if (index > -1) {
+            answers[index].response = response;
+        } else {
+            answers.push({ questionIndex, response });
+        }
+        console.log(answers);
+
+        return answers;
+    });
+}
+
+export function resetAnswers() {
+    userAnswers.set([]);
+}
+
+export { totalImpacts };
+
+export const RandomUsers = writable<{ totalOptimistImpact: number; totalInnovatorImpact: number; }[]>([]);
+
+export function makeRandomUser() {
+    const userAnswers = questions.map(question => ({
+        questionIndex: question.index,
+        response: Math.floor(Math.random() * 5) - 2,
+    }));
+
+    let totalOptimistImpact = 0;
+    let totalInnovatorImpact = 0;
+
+    userAnswers.forEach(({ questionIndex, response }) => {
+        const question = questions.find(q => q.index === questionIndex);
+        if (!question) return;
+
+        totalOptimistImpact += response * question.optimist;
+        totalInnovatorImpact += response * question.innovator;
+    });
+
+    totalOptimistImpact = Math.min(100, Math.max(-100, totalOptimistImpact));
+    totalInnovatorImpact = Math.min(100, Math.max(-100, totalInnovatorImpact));
+
+
+    return {
+        totalOptimistImpact,
+        totalInnovatorImpact,
+    };
+}
+
+export function generate100RandomUsers() {
+    const newRandomUsers = Array.from({ length: 100 }, makeRandomUser);
+
+    console.log(newRandomUsers);
+
+    RandomUsers.set(newRandomUsers);
+}
+
+generate100RandomUsers();

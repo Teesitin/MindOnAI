@@ -2,6 +2,8 @@
     import QandA from "$lib/QandA.svelte";
     import { questions } from '$lib/data'; // Adjust the path as necessary
 	import { Button, Heading, P } from "flowbite-svelte";
+
+
 </script>
 
 <div class="text-center mt-10 mx-2 md:max-w-4xl md:mx-auto">
