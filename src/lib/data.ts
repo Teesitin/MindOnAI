@@ -11,6 +11,7 @@ export interface Answer {
 }
 
 export interface Quadrant {
+    quadrant: number;
     name: string;
     description: string;
     support: string;
@@ -81,66 +82,75 @@ export const answerOptions: Answer[] = [
 
 export const quadrants: Quadrant[] = [
     {
-        name: 'Prudent Pessimist',
-        description: 'Concerned about AI risks, supports restrictions and careful examination of AI applications.',
+        quadrant: 1,
+        name: 'Supporting Pessimist',
+        description: 'Supporting Pessimists are cautiously optimistic about the potential benefits of AI but remain skeptical about its broader impacts. They are innovators at heart, seeking to push the boundaries of technology while being acutely aware of its limitations and potential pitfalls.',
         optimistRange: [-100, -51],
         innovatorRange: [51, 100],
-        support: 'Low Optimism, High Innovator'
+        support: 'Low Optimism, High Innovation'
     },
     {
-        name: 'Moderate Monitor',
-        description: 'Supports AI growth with moderate oversight, aims for a balanced development path.',
-        optimistRange: [-100, -51],
-        innovatorRange: [-50, 50],
-        support: 'Moderate Optimism, Moderate Innovator'
-    },
-    {
-        name: 'Vigilant Critic',
-        description: 'Skeptical of AI\'s promise, favors rigorous evaluation and reflection before adoption if any.',
-        optimistRange: [-100, -51],
-        innovatorRange: [-100, -51],
-        support: 'Low Optimism, Low Innovator'
-    },
-    {
-        name: 'Cautious Regulator',
-        description: 'Advocates for strict regulation, cautious about the potential consequences of AI.',
+        quadrant: 2,
+        name: 'Neutral Innovator',
+        description: 'Neutral Innovators maintain a balanced perspective on AI, recognizing both its transformative potential and the challenges it poses. They are enthusiastic about exploring new technological frontiers but remain grounded in their expectations about the pace and scope of change.',
         optimistRange: [-50, 50],
         innovatorRange: [51, 100],
-        support: 'Moderate Optimism, High Innovator'
+        support: 'Moderate Optimism, High Innovation'
     },
     {
+        quadrant: 3,
+        name: 'Free Spirit Optimist',
+        description: 'Free Spirit Optimists are fervent believers in the power of AI to revolutionize society positively. They see AI as a catalyst for unprecedented innovation and progress across all sectors, from healthcare to education.',
+        optimistRange: [51, 100],
+        innovatorRange: [51, 100],
+        support: 'High Optimism, High Innovation'
+    },
+    {
+        quadrant: 4,
+        name: 'Pure Pessimist',
+        description: 'Pure Pessimists are deeply concerned about the risks and ethical dilemmas posed by AI. They question the wisdom of pursuing advanced AI technologies, fearing negative consequences for society, employment, and privacy.',
+        optimistRange: [-100, -51],
+        innovatorRange: [-50, 50],
+        support: 'Moderate Optimism, Moderate Innovation'
+    },
+    {
+        quadrant: 5,
         name: 'Centrist',
-        description: 'Holds a central view on AI, neither too optimistic nor too innovative, prefers a steady approach.',
+        description: ' Centrists adopt a pragmatic approach to AI, recognizing its potential benefits and challenges. They advocate for a balanced development strategy that considers ethical, social, and economic implications.',
         optimistRange: [-50, 50],
         innovatorRange: [-50, 50],
-        support: 'Moderate Optimism, Moderate Innovator'
+        support: 'Moderate Optimism, Moderate Innovation'
     },
     {
-        name: 'Tempered Enthusiast',
-        description: 'Generally positive about AI, but advocates for a tempered approach to innovation.',
+        quadrant: 6,
+        name: 'Nonchalant Optimist',
+        description: 'Nonchalant Optimists are confident in the positive impact of AI on society. While they may not be at the forefront of innovation, they enthusiastically support the integration of AI into various aspects of daily life.',
+        optimistRange: [51, 100],
+        innovatorRange: [-50, 50],
+        support: 'High Optimism, Moderate Innovation'
+    },
+    {
+        quadrant: 7,
+        name: 'Extremely Critical',
+        description: 'Extremely Critical individuals are highly skeptical of AI\'s benefits, focusing instead on the potential for misuse, ethical concerns, and unintended consequences. They view AI with significant caution and advocate for a restrained approach to its development.',
+        optimistRange: [-100, -51],
+        innovatorRange: [-100, -51],
+        support: 'Low Optimism, Low Innovation'
+    },
+    {
+        quadrant: 8,
+        name: 'Tempered Regulator',
+        description: 'Tempered Regulators believe in the potential of AI but stress the importance of governance, ethical standards, and public accountability. They are wary of unchecked innovation and prioritize the establishment of robust regulatory frameworks.',
         optimistRange: [-50, 50],
         innovatorRange: [-100, -51],
-        support: 'Moderate Optimism, Low Innovator'
+        support: 'Moderate Optimism, Low Innovation'
     },
     {
+        quadrant: 9,
         name: 'Ethical Guardian',
-        description: 'Values ethical considerations in AI development, supports thoughtful regulation.',
-        optimistRange: [51, 100],
-        innovatorRange: [51, 100],
-        support: 'High Optimism, High Innovator'
-    },
-    {
-        name: 'Progressive Optimist',
-        description: 'Sees the benefits of AI, believes in progressive policies to guide its development.',
-        optimistRange: [51, 100],
-        innovatorRange: [-50, 50],
-        support: 'High Optimism, Moderate Innovator'
-    },
-    {
-        name: 'AI Enthusiast',
-        description: 'Highly optimistic about AI, favors rapid innovation with minimal regulatory interference.',
+        description: 'Ethical Guardians are deeply committed to ensuring that AI development is guided by strong moral principles and serves the greater good. They are optimistic about AI\'s potential to address significant challenges but insist on ethical considerations being at the forefront of technological innovation.',
         optimistRange: [51, 100],
         innovatorRange: [-100, -51],
-        support: 'High Optimism, Low Innovator'
+        support: 'High Optimism, Low Innovation'
     }
 ];

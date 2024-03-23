@@ -31,6 +31,9 @@
 
         <P class="text-center">{userQuadrant.description}</P>
     {/if}
+
+    <P class="text-center mt-5">Optimist Score: {scores.totalOptimist}</P>
+    <P class="text-center">Inovation Score: {scores.totalInnovator}</P>
 </div>
 
 <XyPloter/>
