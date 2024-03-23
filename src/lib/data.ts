@@ -69,7 +69,7 @@ export const questions: Question[] = [
     { index: 47, question: "AI-guided decision-making in finance can enhance efficiency, but safeguards are necessary to prevent algorithmic bias.", optimist: 4, innovator: -3 },
     { index: 48, question: "The use of AI in scientific research holds promise, but ethical oversight is essential to prevent misuse or manipulation of findings.", optimist: 3, innovator: -5 },
     { index: 49, question: "AI has the potential to revolutionize education, but we must ensure it doesn't replace human interaction in learning.", optimist: 3, innovator: -3 },
-    { index: 50, question: "AI will further decreaase birth rates.", optimist: -4, innovator: 0 },
+    { index: 50, question: "AI will further decrease birth rates.", optimist: -4, innovator: 0 },
 ];
 
 export const answerOptions: Answer[] = [
