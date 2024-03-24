@@ -2,7 +2,7 @@
     import QandA from "$lib/QandA.svelte";
     import { questions } from '$lib/data'; // Adjust the path as necessary
 	import { Button, Heading, P } from "flowbite-svelte";
-
+    import { userAnswers } from '$lib/answerStore'
 
 </script>
 
@@ -20,7 +20,7 @@
 </div>
 
 <div class="max-w-3xl m-auto flex flex-col items-center mb-20 mt-10">
-    <Button href="/results">
+    <Button href="/results" disabled={$userAnswers.length !== 50 ? true : null}>
         Complete
     </Button>
 </div>

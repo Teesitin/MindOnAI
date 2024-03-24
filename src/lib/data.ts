@@ -73,11 +73,11 @@ export const questions: Question[] = [
 ];
 
 export const answerOptions: Answer[] = [
-    { answer: "Strongly Agree", impact: 3 },
-    { answer: "Agree", impact: 1.5 },
+    { answer: "Strongly Agree", impact: 2 },
+    { answer: "Agree", impact: 1 },
     { answer: "Unsure", impact: 0 },
-    { answer: "Disagree", impact: -1.5 },
-    { answer: "Strongly Disagree", impact: -3 }
+    { answer: "Disagree", impact: -1 },
+    { answer: "Strongly Disagree", impact: -2 }
 ];
 
 export const quadrants: Quadrant[] = [

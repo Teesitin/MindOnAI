@@ -7,7 +7,7 @@ interface Answer {
     response: number;
 }
 
-let userAnswers = writable<Answer[]>([]);
+export let userAnswers = writable<Answer[]>([]);
 
 let totalImpacts = derived(userAnswers, ($userAnswers) => {
     let totalOptimistImpact = 0;
@@ -90,4 +90,4 @@ export function generateRandomUsers(users: number) {
     RandomUsers.set(newRandomUsers);
 }
 
-generateRandomUsers();
+generateRandomUsers(100);
