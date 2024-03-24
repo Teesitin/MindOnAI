@@ -82,12 +82,12 @@ export function makeRandomUser() {
     };
 }
 
-export function generate100RandomUsers() {
-    const newRandomUsers = Array.from({ length: 100 }, makeRandomUser);
+export function generateRandomUsers(users: number) {
+    const newRandomUsers = Array.from({ length: users }, makeRandomUser);
 
     console.log(newRandomUsers);
 
     RandomUsers.set(newRandomUsers);
 }
 
-generate100RandomUsers();
+generateRandomUsers();

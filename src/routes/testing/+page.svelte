@@ -1,7 +1,7 @@
 <script lang="ts">
-    import { RandomUsers, generate100RandomUsers } from '$lib/answerStore';
+    import { RandomUsers, generateRandomUsers } from '$lib/answerStore';
     import { quadrants, type Quadrant } from '$lib/data';
-    import { Button, Heading, P, Popover } from 'flowbite-svelte';
+    import { Button, Heading, P, Popover, Progressbar } from 'flowbite-svelte';
 
     function calculateDotPosition(optimistImpact: number, innovatorImpact: number) {
         const centerX = 384;
@@ -24,6 +24,25 @@
         $RandomUsers[0].totalInnovatorImpact >= q.innovatorRange[0] &&
         $RandomUsers[0].totalInnovatorImpact <= q.innovatorRange[1]
     );
+
+    function getQuadrant(user: { totalOptimistImpact: number, totalInnovatorImpact: number }): Quadrant | undefined {
+        return quadrants.find(q => 
+            user.totalOptimistImpact >= q.optimistRange[0] &&
+            user.totalOptimistImpact <= q.optimistRange[1] &&
+            user.totalInnovatorImpact >= q.innovatorRange[0] &&
+            user.totalInnovatorImpact <= q.innovatorRange[1]
+        );
+    }
+
+    let quadrantCounts = {};
+
+    // Reactive update of quadrant counts
+    $: {
+        quadrantCounts = quadrants.reduce((acc, quadrant) => {
+            acc[quadrant.name] = $RandomUsers.filter(user => getQuadrant(user) === quadrant).length;
+            return acc;
+        }, {});
+    }
 </script>
 
 <div class="text-center mt-10 mx-2 md:max-w-4xl md:mx-auto border-2 rounded-xl bg-gray-50 p-10">
@@ -38,10 +57,25 @@
 </div>
 
 <div class="max-w-7xl m-auto flex justify-center mt-10">
-    <Button on:click={generate100RandomUsers}>
+
+
+    <Button on:click={() => generateRandomUsers(1000)}>
         Make 100 More
     </Button>
 </div>
+
+
+<div class="m-auto max-w-3xl mt-5">
+    {#each quadrants as quadrant}
+        <div class="mt-2 flex justify-between">
+            <p>{quadrant.quadrant} - {quadrant.name} - {quadrantCounts[quadrant.name]}</p>
+            <Progressbar progress={quadrantCounts[quadrant.name]} class="max-w-96"/>
+        </div>
+    {/each}
+</div>
+
+
+
 
 <div class="text-center mx-2 md:max-w-3xl md:mx-auto relative">
     <img src="/Ai-Test.png" alt="ai-xy-plot" class="w-full h-auto">
