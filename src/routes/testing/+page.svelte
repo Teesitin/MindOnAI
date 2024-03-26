@@ -149,8 +149,8 @@ function handleAnswerChange(questionIndex: number, selectedImpact: number) {
                         {question.question}
                     </div>
                     <div class="mt-2 block">
-                        <div>Optomistic - {question.optimist}</div>
-                        <div>Innovative - {question.innovator}</div>
+                        <div>Optomistic: {question.optimist}</div>
+                        <div>Innovative: {question.innovator}</div>
                     </div>
                 </div>
             
@@ -180,8 +180,8 @@ function handleAnswerChange(questionIndex: number, selectedImpact: number) {
         </div>
 
         <div>
-            Optomist - {totalOptimistImpact}
-            Innovator - {totalInnovatorImpact}
+            Optomist: {totalOptimistImpact}
+            Innovator: {totalInnovatorImpact}
         </div>
     </div>
 </div>

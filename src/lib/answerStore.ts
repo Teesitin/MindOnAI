@@ -4,8 +4,10 @@ import { questions } from '$lib/data';
 
 interface Answer {
     questionIndex: number;
-    response: number;
+    response?: number;
+    grade?: 'yes' | 'no' | 'unanswer';
 }
+
 
 export let userAnswers = writable<Answer[]>([]);
 
@@ -16,6 +18,7 @@ let totalImpacts = derived(userAnswers, ($userAnswers) => {
     $userAnswers.forEach(({ questionIndex, response }) => {
         const question = questions.find(q => q.index === questionIndex);
         if (!question) return;
+        if (!response) return;
 
         totalOptimistImpact += response * question.optimist;
         totalInnovatorImpact += response * question.innovator;
@@ -39,10 +42,22 @@ export function answerQuestion(questionIndex: number, response: number) {
         if (index > -1) {
             answers[index].response = response;
         } else {
-            answers.push({ questionIndex, response });
+            answers.push({ questionIndex, response, grade:"unanswer" });
         }
         console.log(answers);
 
+        return answers;
+    });
+}
+
+export function updateAnswerGrade(questionIndex: number, grade: 'yes' | 'no' | 'unanswer') {
+    userAnswers.update(answers => {
+        const index = answers.findIndex(answer => answer.questionIndex === questionIndex);
+        if (index > -1) {
+            answers[index].grade = grade;
+        } else {
+            answers.push({questionIndex, grade});
+        }
         return answers;
     });
 }
@@ -90,4 +105,4 @@ export function generateRandomUsers(users: number) {
     RandomUsers.set(newRandomUsers);
 }
 
-generateRandomUsers(100);
+generateRandomUsers(1);

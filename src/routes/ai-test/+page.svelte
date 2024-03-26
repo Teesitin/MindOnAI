@@ -3,7 +3,6 @@
     import { questions } from '$lib/data'; // Adjust the path as necessary
 	import { Button, Heading, P } from "flowbite-svelte";
     import { userAnswers } from '$lib/answerStore'
-
 </script>
 
 <div class="text-center mt-10 mx-2 md:max-w-4xl md:mx-auto">
@@ -20,7 +19,13 @@
 </div>
 
 <div class="max-w-3xl m-auto flex flex-col items-center mb-20 mt-10">
-    <Button href="/results" disabled={$userAnswers.length !== 50 ? true : null}>
-        Complete
-    </Button>
+
+
+    {#if $userAnswers.length !== questions.length}
+        {$userAnswers.length} / {questions.length} Questions
+    {:else}
+        <Button href="/results">
+            Complete
+        </Button>
+    {/if}
 </div>
