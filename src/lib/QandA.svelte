@@ -7,6 +7,7 @@
 
     export let questionIndex: number;
     export let question: string;
+    export let index2: number;
 
     let selectedValue: number | undefined;
     let selectedGrade: 'yes' | 'no' | 'unanswer' | undefined;
@@ -26,7 +27,7 @@
     <div class="flex gap-10 justify-between">
         <div class="w-1/2 block md:w-9/12">
             <div class="text-blue-600 font-semibold">
-                Q{questionIndex}
+                Q{index2 + 1}
             </div>
             <div class="mt-4">
                 {question}

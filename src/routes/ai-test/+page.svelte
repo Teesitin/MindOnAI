@@ -13,8 +13,8 @@
 </div>
 
 <div class="flex flex-col items-center mx-2 md:max-w-4xl md:mx-auto">
-    {#each questions as { index, question }}
-        <QandA questionIndex={index} question={question}/>
+    {#each questions as { index, question }, index2}
+        <QandA questionIndex={index} question={question} index2={index2}/>
     {/each}
 </div>
 

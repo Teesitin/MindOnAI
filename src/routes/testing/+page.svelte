@@ -66,21 +66,16 @@ let totalInnovatorImpact = 0;
 // This function is called whenever an answer is selected
 function handleAnswerChange(questionIndex: number, selectedImpact: number) {
     previousAnswers.update(current => {
-        // Find the question to get the impacts based on the index
         const question = questions.find(q => q.index === questionIndex);
 
-        // Calculate the difference from the previous answer, if any
         const previousImpact = current[questionIndex] || 0;
         const impactDifference = selectedImpact - previousImpact;
 
-        // Update the total impacts
         totalOptimistImpact += question.optimist * impactDifference;
         totalInnovatorImpact += question.innovator * impactDifference;
 
-        // Update the dot position store
         dotPosition.set(calculateDotPosition(totalOptimistImpact, totalInnovatorImpact));
 
-        // Store the new impact as the previous one for the next change
         current[questionIndex] = selectedImpact;
         return current;
     });
