@@ -11,7 +11,8 @@
     let selectedValue: number | undefined;
     let selectedGrade: 'yes' | 'no' | 'unanswer' | undefined;
     let subjectColor = Subjects.find(sub => sub.name === question.subject)?.color || 'gray-100'; 
-    console.log(subjectColor);
+    $: borderClass = 'border-2 border-' +subjectColor;
+
 
     function handleAnswerChange(value: number) {
         selectedValue = value;
@@ -31,7 +32,7 @@
     }
 </script>
 
-<div class="w-full block bg-gray-50 p-4 m-4 rounded-xl border-2 border-{subjectColor}">
+<div style="border-color: {subjectColor};" class="w-full block bg-gray-50 p-4 m-4 rounded-xl border-2">
     <div class="flex gap-10 justify-between">
         <div class="w-1/2 block md:w-9/12">
             <div class="text-blue-600 font-semibold">
