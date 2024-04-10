@@ -13,14 +13,12 @@
 </div>
 
 <div class="flex flex-col items-center mx-2 md:max-w-4xl md:mx-auto">
-    {#each questions as { index, question }, index2}
-        <QandA questionIndex={index} question={question} index2={index2}/>
+    {#each questions as question, index}
+        <QandA question={question} index2={index}/>
     {/each}
 </div>
 
 <div class="max-w-3xl m-auto flex flex-col items-center mb-20 mt-10">
-
-
     {#if $userAnswers.length !== questions.length}
         {$userAnswers.length} / {questions.length} Questions
     {:else}

@@ -1,42 +1,50 @@
 <script lang="ts">
     import { Radio, Popover, Button } from 'flowbite-svelte';
-    import { answerOptions, questions, type Question } from '$lib/data';
+    import { answerOptions, questions, type Question, Subjects } from '$lib/data';
     import { answerQuestion, updateAnswerGrade} from '$lib/answerStore';
-    import { QuestionCircleOutline, ThumbsUpSolid, ThumbsDownSolid } from 'flowbite-svelte-icons';
+    import { QuestionCircleOutline, ThumbsUpSolid, ThumbsDownSolid , RedoOutline} from 'flowbite-svelte-icons';
 
 
-    export let questionIndex: number;
-    export let question: string;
+    export let question: Question;
     export let index2: number;
 
     let selectedValue: number | undefined;
     let selectedGrade: 'yes' | 'no' | 'unanswer' | undefined;
+    let subjectColor = Subjects.find(sub => sub.name === question.subject)?.color || 'gray-100'; 
+    console.log(subjectColor);
 
     function handleAnswerChange(value: number) {
         selectedValue = value;
-        answerQuestion(questionIndex, value);
+        answerQuestion(question.index, value);
     }
 
     function handleGradeChange(grade: 'yes' | 'no' | 'unanswer') {
+        if (grade == selectedGrade)
+            {
+                selectedGrade = "unanswer";
+                updateAnswerGrade(question.index, "unanswer");
+                return;
+            }
+
         selectedGrade = grade;
-        updateAnswerGrade(questionIndex, grade);
+        updateAnswerGrade(question.index, grade);
     }
 </script>
 
-<div class="w-full block bg-gray-50 p-4 m-4 rounded-xl border-2">
+<div class="w-full block bg-gray-50 p-4 m-4 rounded-xl border-2 border-{subjectColor}">
     <div class="flex gap-10 justify-between">
         <div class="w-1/2 block md:w-9/12">
             <div class="text-blue-600 font-semibold">
                 Q{index2 + 1}
             </div>
             <div class="mt-4">
-                {question}
+                {question.question}
             </div>
         </div>
 
         <div class="w-1/2 md:w-3/12">
             {#each answerOptions as { answer, impact }}
-                <Radio name={`question-${questionIndex}`} bind:group={selectedValue} value={impact} on:change={() => handleAnswerChange(impact)} class="m-2">
+                <Radio name={`question-${index2}`} bind:group={selectedValue} value={impact} on:change={() => handleAnswerChange(impact)} class="m-2">
                     {answer}
                 </Radio>
             {/each}
@@ -51,7 +59,7 @@
                 How did you like this question?
             </div>
     
-            <div class="flex justify-center gap-5">    
+            <div class="flex justify-center gap-5 mb-2">    
                 <Button on:click={() => handleGradeChange('yes')} color="alternative" class={selectedGrade === 'yes' ? 'bg-primary-600 hover:bg-primary-600' : ''}>
                     <ThumbsUpSolid class={selectedGrade === 'yes' ? 'text-white' : ''}/>
                 </Button>
