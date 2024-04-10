@@ -26,7 +26,11 @@ export const questions: Question[] = [
     { index: 102, question: "The use of AI in medicine will raise ethical concerns about patient consent.", optimist: -2, innovator: 2, subject: "Healthcare" },
     { index: 103, question: "AI will revolutionize healthcare by predicting diseases before they occur.", optimist: 5, innovator: 4, subject: "Healthcare" },
     { index: 104, question: "AI-driven medical diagnosis can improve healthcare accessibility, but we must address privacy concerns in patient data handling.", optimist: 1, innovator: -3, subject: "Healthcare" },
-
+    
+    { index: 105, question: "AI should prioritize patient privacy over predictive accuracy.", optimist: -3, innovator: 4, subject: "Healthcare" },
+    { index: 106, question: "Innovations in AI healthcare must be accessible to all, not just the wealthy.", optimist: 5, innovator: -1, subject: "Healthcare" },
+    { index: 107, question: "The pace of AI innovation in healthcare is more important than immediate practical applications.", optimist: -2, innovator: 5, subject: "Healthcare" },
+    
 
     // Education
     { index: 201, question: "Education systems should include AI literacy as a core subject.", optimist: 3, innovator: 3, subject: "Education" },
@@ -35,6 +39,10 @@ export const questions: Question[] = [
     { index: 204, question: "AI will enable more effective and personalized learning experiences.", optimist: 2, innovator: 4, subject: "Education" },
     { index: 205, question: "Dependency on AI will weaken human cognitive abilities.", optimist: -1, innovator: -1, subject: "Education" },
 
+    { index: 206, question: "AI's role in education should primarily support teachers, not replace them.", optimist: 4, innovator: -2, subject: "Education" },
+    { index: 207, question: "Investing in AI for personalized learning is crucial, even if it leads to short-term inequalities.", optimist: -1, innovator: 5, subject: "Education" },
+    { index: 208, question: "The most significant benefit of AI in education is enhancing human creativity.", optimist: 5, innovator: -3, subject: "Education" },
+    
 
     // Ethics and Morality
     { index: 301, question: "Privacy concerns are secondary to the benefits AI can offer.", optimist: 2, innovator: -4, subject: "Ethics" },
@@ -45,6 +53,10 @@ export const questions: Question[] = [
     { index: 306, question: "AI in entertainment will create hyper-personalized content.", optimist: 4, innovator: 5, subject: "Ethics" },
     { index: 307, question: "It is unethical to create AI that mimics human emotions.", optimist: -1, innovator: -5, subject: "Ethics" },
 
+    { index: 308, question: "The ethical implications of AI should be considered more important than its innovation.", optimist: 3, innovator: -5, subject: "Ethics" },
+    { index: 309, question: "AI should always reflect human ethical standards, even at the cost of efficiency.", optimist: 4, innovator: -4, subject: "Ethics" },
+    { index: 310, question: "Rapid innovation in AI ethics is necessary to address emerging moral dilemmas.", optimist: -3, innovator: 5, subject: "Ethics" },
+    
 
     // Society
     { index: 401, question: "AI technology will lead to greater inequalities in society.", optimist: -5, innovator: -4, subject: "Society" },
@@ -55,6 +67,10 @@ export const questions: Question[] = [
     { index: 406, question: "AI will further decrease birth rates.", optimist: -4, innovator: 0, subject: "Society" },
     { index: 407, question: "AI can bridge the gap between different social classes by providing equal access to information and resources.", optimist: 5, innovator: 4, subject: "Society" },
 
+    { index: 408, question: "AI's impact on reducing societal inequalities is more crucial than advancing technology.", optimist: 5, innovator: -2, subject: "Society" },
+    { index: 409, question: "Social advancements through AI should not compromise community values.", optimist: 4, innovator: -3, subject: "Society" },
+    { index: 410, question: "Innovative AI solutions should be pursued even if they disrupt societal norms.", optimist: -4, innovator: 5, subject: "Society" },
+    
 
     // Technology
     { index: 501, question: "AI can unbiasedly perform tasks better than humans.", optimist: 3, innovator: 4, subject: "Technology" },
@@ -64,6 +80,10 @@ export const questions: Question[] = [
     { index: 505, question: "Public trust in AI systems is critical for widespread adoption.", optimist: 3, innovator: 2, subject: "Technology" },
     { index: 506, question: "Robotic automation will drastically reduce human labor in manufacturing.", optimist: -2, innovator: 4, subject: "Technology" },
 
+    { index: 507, question: "The pursuit of cutting-edge AI technology should not overshadow its practical applications.", optimist: 3, innovator: -5, subject: "Technology" },
+    { index: 508, question: "Technological breakthroughs in AI are more important than their immediate usability.", optimist: -5, innovator: 5, subject: "Technology" },
+    { index: 509, question: "AI technology must be developed with a focus on sustainability and environmental impact.", optimist: 5, innovator: -1, subject: "Technology" },
+    
 
     // Judicial
     { index: 601, question: "AI-processed video evidence should be considered valid in court to ensure justice.", optimist: 4, innovator: 5, subject: "Judicial" },
@@ -75,6 +95,10 @@ export const questions: Question[] = [
     { index: 607, question: "AI systems, if sentient, must be subject to human laws and ethical standards.", optimist: -5, innovator: -3, subject: "Judicial" },
     { index: 608, question: "AI should be regulated internationally, not just nationally.", optimist: 1, innovator: 3, subject: "Judicial" },
 
+    { index: 609, question: "AI in the judiciary should focus on eliminating bias, even if it slows down innovation.", optimist: 4, innovator: -4, subject: "Judicial" },
+    { index: 610, question: "The rapid implementation of AI in legal processes is essential, despite ethical concerns.", optimist: -3, innovator: 5, subject: "Judicial" },
+    { index: 611, question: "Legal frameworks for AI need to evolve as quickly as the technology itself.", optimist: -2, innovator: 5, subject: "Judicial" },
+    
 
     // Political
     { index: 701, question: "Implementing AI in political decision-making must consider ethical implications to ensure fairness and prevent bias.", optimist: 2, innovator: 3, subject: "Political" },
@@ -82,12 +106,20 @@ export const questions: Question[] = [
     { index: 703, question: "AI can enhance democratic processes through transparency and accountability, but must be carefully managed.", optimist: 4, innovator: 5, subject: "Political" },
     { index: 704, question: "International rather than national regulation of AI is crucial for addressing global challenges and ensuring ethical governance.", optimist: 1, innovator: 3, subject: "Political" },
 
+    { index: 705, question: "The role of AI in politics should primarily be transparency, even at innovation's expense.", optimist: 5, innovator: -3, subject: "Political" },
+    { index: 706, question: "Advancements in AI for political analysis and decision-making should be prioritized.", optimist: -1, innovator: 5, subject: "Political" },
+    { index: 707, question: "Ethical AI usage in politics is more important than its potential to reshape governance.", optimist: 4, innovator: -4, subject: "Political" },
     
+
     // Business and Jobs
     { index: 801, question: "A company must be held fully accountable for any damages caused by its AI systems.", optimist: 0, innovator: -3, subject: "Business" },
     { index: 802, question: "A company should receive full credit for any successes achieved through its AI systems.", optimist: 0, innovator: 3, subject: "Business" },
     { index: 803, question: "AI will significantly reduce employment opportunities.", optimist: -4, innovator: -3, subject: "Business" },
     { index: 804, question: "AI technologies should be used to monitor employee productivity in the workplace.", optimist: 5, innovator: 5, subject: "Business" },
+
+    { index: 805, question: "In business, the ethical use of AI should take precedence over competitive advantage.", optimist: 5, innovator: -2, subject: "Business" },
+    { index: 806, question: "The drive for innovation should not compromise workers' rights and job security.", optimist: 4, innovator: -3, subject: "Business" },
+    { index: 807, question: "Embracing AI in business requires a bold approach, prioritizing innovation over tradition.", optimist: -4, innovator: 5, subject: "Business" },
 ];
   
 export const Subjects = [
