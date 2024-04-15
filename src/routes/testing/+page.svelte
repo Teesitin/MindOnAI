@@ -84,6 +84,149 @@ function handleAnswerChange(questionIndex: number, selectedImpact: number) {
 
 </script>
 
+<div class="text-left mt-10 mx-2 md:max-w-4xl md:mx-auto border-2 rounded-xl bg-gray-50 p-10">
+    <div class="mb-6 text-xl font-semibold">
+        About Me
+    </div>
+
+    <div class="mb-6">
+        Who am I, you ask? Just your average Joe who's probably spent way more time programming than is strictly healthy.
+        Currently, I'm navigating the exciting world of Computer Engineering at UCF, loving every bit of the challenge.
+        For the past five years, I've been diving deep into website creation and backend development, and let's just say, I've become a little too fond of it!
+    </div>
+
+    <div>
+        One day, seemingly out of nowhere, I had this spark of an idea.
+        You see, I've always had a thing for political quizzes and a fascination with AI.
+        So, I thought, why not combine the two? Thus began my journey into developing an app that bridges these interests.
+        Admittedly, I'm pretty green when it comes to crafting quizzes and tests.
+        I'm aware that my questions might cover a wide spectrum of quality, but I'm eager to refine them, learning as I go and letting the data guide me.
+    </div>
+</div>
+
+
+<div class="border-t-2 h-1 my-10"/>
+
+<div class="text-left mt-10 mx-2 md:max-w-4xl md:mx-auto border-2 rounded-xl bg-gray-50 p-10">
+    <div class="mb-6 text-xl font-semibold">
+        The Quadrants
+    </div>
+
+    <div class="mb-6">
+        Okay. There are nine quadrants:
+
+        <table class="mt-3 ml-3">
+            <thead>
+                <tr>
+                    <th class="w-64">Name</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Supporting Pessimist</td>
+                    <td>Low Optimism, High Innovation</td>
+                </tr>
+                <tr>
+                    <td>Neutral Innovator</td>
+                    <td>Moderate Optimism, High Innovation</td>
+                </tr>
+                <tr>
+                    <td>Free Spirit Optimist</td>
+                    <td>High Optimism, High Innovation</td>
+                </tr>
+                <tr>
+                    <td>Pure Pessimist</td>
+                    <td>Low Optimism, Moderate Innovation</td>
+                </tr>
+                <tr>
+                    <td>Centrist</td>
+                    <td>Moderate Optimism, Moderate Innovation</td>
+                </tr>
+                <tr>
+                    <td>Nonchalant Optimist</td>
+                    <td>High Optimism, Moderate Innovation</td>
+                </tr>
+                <tr>
+                    <td>Extremely Critical</td>
+                    <td>Low Optimism, Low Innovation</td>
+                </tr>
+                <tr>
+                    <td>Tempered Regulator</td>
+                    <td>Moderate Optimism, Low Innovation</td>
+                </tr>
+                <tr>
+                    <td>Ethical Guardian</td>
+                    <td>High Optimism, Low Innovation</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="mt-6">
+            I'm looking forward to refining and adding more depth to the quadrants for clearer definitions.
+            However, for the moment, I'm content with their current state.
+            My philosophy for this project embraces a flexible approach to definitions, allowing for a nuanced and open interpretation of each quadrant.
+            You will see "open for interpretation" is a common theme.
+        </div>
+
+        <div class="mt-6">
+            Regarding the fairness and balance of the test, it currently has a pronounced tendency to categorize results as centrist.
+            Despite efforts to recalibrate the scoring to encourage more diverse outcomes across the quadrants, the inclusion of a "not sure" option tends to favor centrist results in randomized testing scenarios.
+            As a temporary measure, I've implemented a cap of 100 for each axis in the quadrant grading system.
+            It's possible for the cumulative scores of the questions to exceed this limit on any given axis, but I don't see this as a drawback.
+            In fact, I believe it underscores an important aspect of the test: individuals with extreme views on certain topics have the opportunity to reach these outer bounds through their responses.
+        </div>
+    </div>
+
+    <div>
+
+    </div>
+</div>
+
+
+<div class="text-left mt-10 mx-2 md:max-w-4xl md:mx-auto border-2 rounded-xl bg-gray-50 p-10">
+    <div class="mb-6 text-xl font-semibold">
+        Questions, Questions, Questions
+    </div>
+
+    <div class="mb-6">
+        Please forgive! I be new at this! 
+    </div>
+
+    <div class="mb-6">
+
+        My vision for this test hinges on its interpretative nature.
+        I aim to encourage users to engage deeply with each question, urging them to choose "Not Sure" if the topic feels unfamiliar.
+        Initially, the test was designed with just four response options, excluding uncertainty.
+        However, feedback from play-testers, who were sometimes puzzled by the references in the questions, led to the inclusion of a "Not Sure" option.
+    </div>
+
+    <div class="mb-6">
+        As for the topics covered, I'm generally satisfied.
+        They seem to encompass the necessary ground, though I'm not opposed to broadening the range of subjects while possibly reducing the number of questions for each.
+        Speaking of which, the current number of questions feels excessive. My target is to streamline the test to fewer than 50 questions, aiming ideally for around 40.
+        I believe that anything beyond 60 questions risks diluting the test with redundant content.
+    </div>
+
+    <div class="mb-6">
+        In terms of tone and brevity, I'm quite pleased with how the questions have been framed.
+        The goal is to ensure clarity without overly simplifying the questions, providing enough information for thoughtful consideration without making the answers overly obvious.
+    </div>
+</div>
+
+<div class="border-t-2 h-1 my-10"/>
+
+<div class="text-left mt-10 mx-2 md:max-w-4xl md:mx-auto border-2 rounded-xl bg-gray-50 p-10">
+    <div class="mb-6 text-xl font-semibold">
+        A Playground for the Enthused
+    </div>
+
+    <div class="">
+        Not much in terms of a playground, but it must suffice! A bit brokey though. Play at your own risk!
+    </div>
+</div>
+
+
 <div class="text-center mt-10 mx-2 md:max-w-4xl md:mx-auto border-2 rounded-xl bg-gray-50 p-10">
     {$RandomUsers[0].totalOptimistImpact}
     {$RandomUsers[0].totalInnovatorImpact}

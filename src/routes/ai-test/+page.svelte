@@ -1,12 +1,37 @@
 <script lang="ts">
+    import { db } from '$lib/firebase';
+    import { collection, addDoc } from 'firebase/firestore';
+    
     import QandA from "$lib/QandA.svelte";
     import { questions } from '$lib/data';
     import { Button, Heading, P } from "flowbite-svelte";
-    import { userAnswers } from '$lib/answerStore';
+    import { userAnswers, simulateRandomUserResponses } from '$lib/answerStore';
+	import { goto } from "$app/navigation";
+    import { get } from 'svelte/store';
 
     function isFirstQuestionInSection(index: number) {
         return index % 100 === 1;
     }
+
+    async function completeTest() {
+        const answers = get(userAnswers);
+
+        try {
+            await addDoc(collection(db, "answerSets"), {
+                answers: answers,
+                timestamp: new Date(),
+            });
+
+            console.log("Document successfully written!");
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+
+        goto("/results");
+    }
+
+    // simulateRandomUserResponses();
+
 </script>
 
 <div class="text-center mt-10 mx-2 md:max-w-4xl md:mx-auto">
@@ -30,6 +55,6 @@
     {#if $userAnswers.length !== questions.length}
         <P>{$userAnswers.length} / {questions.length} Questions</P>
     {:else}
-        <Button href="/results">Complete</Button>
+        <Button on:click={completeTest}>Complete</Button>
     {/if}
 </div>
