@@ -5,6 +5,7 @@
     import { Button, Heading, P, Popover, Progressbar, Radio } from 'flowbite-svelte';
     import { Range, Label } from 'flowbite-svelte';
 	import { writable } from 'svelte/store';
+    import { GithubSolid } from 'flowbite-svelte-icons';
   
     let minmaxValue = 100;
     let tempProgressValue = 100;
@@ -212,6 +213,11 @@ function handleAnswerChange(questionIndex: number, selectedImpact: number) {
         In terms of tone and brevity, I'm quite pleased with how the questions have been framed.
         The goal is to ensure clarity without overly simplifying the questions, providing enough information for thoughtful consideration without making the answers overly obvious.
     </div>
+
+    <Button href="https://github.com/Teesitin/MindOnAI">
+        <GithubSolid class="mr-5"/>Throw me an issue if you got a comment
+    </Button>
+
 </div>
 
 <div class="border-t-2 h-1 my-10"/>

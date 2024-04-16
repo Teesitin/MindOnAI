@@ -12,4 +12,9 @@
         Take The Test
         <ArrowRightOutline class="w-3.5 h-3.5 ms-2"/>
     </Button>
+
+    <div class="text-center mx-2 md:max-w-3xl md:mx-auto relative">
+        <img src="/Ai-Test.png" alt="ai-xy-plot" class="w-full h-auto">
+    </div>
+    
 </div>
