@@ -106,3 +106,13 @@ export function generateRandomUsers(users: number) {
 }
 
 generateRandomUsers(1);
+
+export function simulateRandomUserResponses() {
+    const randomAnswers = questions.map(question => ({
+        questionIndex: question.index,
+        response: Math.floor(Math.random() * 5) - 2, // Random response between -2 and 2
+        grade: "unanswer" // Defaulting grade to "unanswer", modify as needed
+    }));
+
+    userAnswers.set(randomAnswers); // Directly updates the userAnswers store
+}
